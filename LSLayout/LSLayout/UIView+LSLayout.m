@@ -297,29 +297,34 @@ return ^void (UIView *view,NSLayoutAttribute attribute)
 {
     return ^void (UIView *view,CGFloat spacing,NSLayoutAttribute attribute)
     {
-        NSLayoutAttribute attribute2 = 1;
+        NSLayoutAttribute otherAttribute = 1;
         switch (attribute) {
             case NSLayoutAttributeTop:
-                attribute2 = NSLayoutAttributeBottom;
-                break;
+            {
+              otherAttribute = NSLayoutAttributeBottom;
+            }
+            break;
             case NSLayoutAttributeLeft:
-                attribute2 = NSLayoutAttributeRight;
+            { otherAttribute = NSLayoutAttributeRight;
+            }
                 break;
             case NSLayoutAttributeBottom:
-                attribute2 = NSLayoutAttributeTop;
+            { otherAttribute = NSLayoutAttributeTop;
                 spacing = -spacing;
+            }
                 break;
             case NSLayoutAttributeRight:
-                attribute2 = NSLayoutAttributeLeft;
+            { otherAttribute = NSLayoutAttributeLeft;
                 spacing = -spacing;
+            }
                 break;
             default:
-                
+            { otherAttribute = NSLayoutAttributeLeft;
+                spacing = -spacing;
+            }
                 break;
         }
-        
-
- self.constraint(attribute).equalTo(view.constraint(attribute2).offset(spacing));
+     self.constraint(attribute).equalTo(view.constraint(otherAttribute).offset(spacing));
         
        
         
