@@ -7,7 +7,6 @@
 //
 
 #import "LSCoustomAlert.h"
-#import "UIView+LSLayout.h"
 #define sheetH 168
 #define contentViewColor [UIColor whiteColor]
 #define alertBgColor [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.4]
@@ -150,11 +149,8 @@
         
         
     }];
-   
      [[UIApplication sharedApplication].keyWindow addSubview:self];
-    
-   
-    [view addSubview:self.contentView];
+     [view addSubview:self.contentView];
 
 }
 
